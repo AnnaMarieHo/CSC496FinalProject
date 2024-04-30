@@ -1,0 +1,39 @@
+#root {
+  width: 100%;
+  min-height: 1200px;
+  text-align: center;
+}
+
+.container {
+  /* display: flex; */
+
+  margin-top: rem;
+  /* From https://css.glass */
+  background-color: rgba(39, 39, 39, 0.95);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+
+  width: 100%;
+  height: 100%;
+}
+body {
+  /* Assuming you want to set the background image to the entire webpage */
+  background-image: url("src/assets/pokeballs.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: center; /* Center the background image */
+  overflow-x: hidden; /* Disable horizontal scrolling */
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  #root {
+    width: 100%;
+    min-height: 990px;
+    text-align: center;
+  }
+}

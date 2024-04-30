@@ -1,0 +1,27 @@
+.grid-container {
+  /* width: 100%; */
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column; /* Display rows in a column for smaller screens */
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container {
+  margin-top: 90px;
+  width: 200px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-container {
+  outline: none;
+  border-color: #007bff;
+}
+.active:active {
+  transform: scale(0.98);
+  transition: 0.3s;
+}
