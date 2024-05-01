@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./PokemonCard.css";
-import { flushSync } from "react-dom";
 
 export default function PokemonCard({
   name,

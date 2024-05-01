@@ -23,7 +23,7 @@ export default function Navbar() {
           </div>
           <ul className={`nav-menu ${isOpen ? "active" : ""}`}>
             <CustomLink to="/">Home</CustomLink>
-            <CustomLink to="/pokemon">Pokemon</CustomLink>
+            <CustomLink to="/pokemon">Search</CustomLink>
           </ul>
         </div>
       </nav>

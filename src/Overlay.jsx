@@ -9,13 +9,7 @@ export function Overlay({ isOpen, onClose, children }) {
         <div className="overlay">
           <div className="overlay-background" onClick={onClose}>
             <div className="overlay-container">
-              <div className="overlay-controls">
-                {/* <button
-                  className="overlay-close"
-                  type="button"
-                  onClick={onClose}
-                ></button> */}
-              </div>
+              <div className="overlay-controls"></div>
               {children}
             </div>
           </div>

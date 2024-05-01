@@ -22,7 +22,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 40vw; /* or some other max-width */
   min-width: 600px;
-  max-height: 100vh; /* Limits the height to 90% of the viewport */
+  max-height: 90vh; /* Limits the height to 90% of the viewport */
   overflow-y: auto; /* Enables vertical scrolling if content is larger than the container */
   overflow-x: hidden; /* Enables vertical scrolling if content is larger than the container */
 }
@@ -34,4 +34,11 @@
   align-items: center;
   justify-content: center;
   z-index: 1500;
+}
+@media only screen and (max-width: 500px) {
+  .overlay-container {
+    margin-top: 40px;
+
+    /* transform: scale(0.88); */
+  }
 }

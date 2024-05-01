@@ -16,7 +16,10 @@
   border: 2px solid #ccc;
   border-radius: 4px;
 }
-
+.pressed:active {
+  transform: scale(0.98);
+  transition: 0.3s;
+}
 .search-container {
   outline: none;
   border-color: #007bff;

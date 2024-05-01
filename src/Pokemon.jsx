@@ -42,9 +42,9 @@ export default function Home() {
             height: "40px",
             textAlign: "center",
             fontSize: "large",
-            zIndex: "1001",
+            zIndex: "900",
             borderRadius: "20px",
-            border: "none",
+            border: "solid white 2px",
           }}
           type="text"
           placeholder="Search Pokémon by name..."
@@ -63,7 +63,11 @@ export default function Home() {
             }}
           >
             {filteredPokemon.map((pokemonData, index) => (
-              <a key={index} onClick={() => handlePokemonSelect(pokemonData)}>
+              <a
+                className="pressed"
+                key={index}
+                onClick={() => handlePokemonSelect(pokemonData)}
+              >
                 <PokemonCard
                   key={index}
                   index={index}

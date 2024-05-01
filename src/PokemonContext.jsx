@@ -6,7 +6,7 @@ const PokemonContext = createContext();
 export const PokemonProvider = ({ children }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const url = "https://pokeapi.co/api/v2/pokemon/";
-  const limit = 40;
+  const limit = 100;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,7 +71,9 @@ export const PokemonProvider = ({ children }) => {
               description: speciesResponse.data.flavor_text_entries.find(
                 (flavor) => flavor.language.name === "en"
               ).flavor_text,
+              color: speciesResponse.data.color.name,
             };
+            console.log(descriptionData.color);
 
             return {
               types: types,

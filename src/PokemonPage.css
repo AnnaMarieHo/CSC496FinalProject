@@ -1,6 +1,6 @@
 .pokemon-page-card-container {
   width: 30vw;
-  margin-top: 0px;
+  margin-top: 20px;
   height: 90vh;
   margin-left: 100px;
   min-height: 1000px;
@@ -151,7 +151,7 @@
 }
 .pokemon-page-description {
   text-align: center;
-  color: black;
+  color: white;
   font-weight: normal;
   padding: 30px;
   width: 70%;
@@ -292,13 +292,20 @@
 }
 @media only screen and (max-width: 500px) {
   .pokemon-page-card-container {
-    width: 75vw;
+    width: 90vw;
     margin-top: 0px;
     height: 135vh;
-    min-height: 1100px;
+    min-height: 1150px;
   }
 
   .pokemon-page-card {
     width: 75vw;
+  }
+  .pokemon-page-description {
+    text-align: center;
+    color: white;
+    font-weight: normal;
+    padding: 30px;
+    width: 100%;
   }
 }

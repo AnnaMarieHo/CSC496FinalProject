@@ -4,12 +4,17 @@ import PokemonContext from "./PokemonContext";
 import "./Home.css";
 import PokemonCard from "./PokemonCard";
 import cinemaIcon from "./assets/cinema.png";
+import { Overlay } from "./Overlay";
+import { useOverlay } from "./OverlayContext"; // Ensure this is correctly imported
 
 export default function Home() {
+  const { isOverlayOpen, showOverlay, hideOverlay } = useOverlay();
+
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [activeOption, setActiveOption] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const pokemonData = useContext(PokemonContext);
+  const [currentCard, setClickedCard] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,6 +31,11 @@ export default function Home() {
   const handlePokemonSelect = (selectedPokemon) => {
     setActiveOption(selectedPokemon);
     setSelectedPokemon(selectedPokemon);
+  };
+  const cardSelect = (selectedPokemon) => {
+    setClickedCard(selectedPokemon);
+    showOverlay();
+    console.log("Active card", currentCard);
   };
 
   return (
@@ -74,25 +84,40 @@ export default function Home() {
             )}
           </div>
         </div>
-
-        {/* <div className="selected-card-container"> */}
         <div className="selected-card">
           {selectedPokemon ? (
-            <PokemonCard
-              index={selectedPokemon.number}
-              spriteUrl={selectedPokemon.spriteUrl}
-              name={selectedPokemon.name}
-              artworkUrl={selectedPokemon.artworkUrl}
-              baseStat={selectedPokemon.stats}
-              type={selectedPokemon.types.map((type) => type)}
-              description={selectedPokemon.description}
-            ></PokemonCard>
+            <a onClick={() => cardSelect(selectedPokemon)}>
+              <PokemonCard
+                index={selectedPokemon.number}
+                spriteUrl={selectedPokemon.spriteUrl}
+                name={selectedPokemon.name}
+                artworkUrl={selectedPokemon.artworkUrl}
+                baseStat={selectedPokemon.stats}
+                type={selectedPokemon.types.map((type) => type)}
+                description={selectedPokemon.description}
+                color={selectedPokemon.color}
+              ></PokemonCard>
+            </a>
           ) : (
             <p style={{ width: "150px" }}>Select A Pokemon</p>
           )}
         </div>
-        {/* </div> */}
       </div>
+      {currentCard && (
+        <Overlay isOpen={isOverlayOpen} onClose={hideOverlay}>
+          <PokemonPage
+            index={currentCard.number}
+            spriteUrl={currentCard.spriteUrl}
+            name={currentCard.name}
+            artworkUrl={currentCard.artworkUrl}
+            baseStat={currentCard.stats}
+            type={currentCard.types}
+            description={currentCard.description}
+            weight={currentCard.weight}
+            height={currentCard.height}
+          />
+        </Overlay>
+      )}
     </>
   );
 }
