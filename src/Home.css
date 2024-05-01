@@ -185,6 +185,8 @@
   }
   .selected-card {
     padding: 0px;
+    left: -90px; /* Align to the right */
+
     padding-left: 0px;
     /* transform: scale(0.75); */
   }
