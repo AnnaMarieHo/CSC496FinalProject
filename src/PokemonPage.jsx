@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./PokemonPage.css";
-import { flushSync } from "react-dom";
 
 export default function PokemonPage({
   name,
@@ -12,6 +11,7 @@ export default function PokemonPage({
   description,
   height,
   weight,
+  pokemon,
 }) {
   const [pokemonName, setPokemonName] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
@@ -26,7 +26,7 @@ export default function PokemonPage({
     baseStat || {};
 
   useEffect(() => {
-    // console.log(index);
+    console.log(pokemon);
     setPokemonName(name);
     setPokemonIndex(index);
     setImageUrl(artworkUrl);
@@ -69,6 +69,7 @@ export default function PokemonPage({
         setWeaknesses(uniqueWeaknesses);
       }
     };
+    // console.log(selectedPokemon);
 
     calculateWeaknesses();
   }, [
@@ -82,6 +83,8 @@ export default function PokemonPage({
     baseStat,
     height,
     weight,
+    pokemon,
+    // selectedPokemon,
   ]);
 
   const limitWidth = (value) => {
@@ -112,160 +115,101 @@ export default function PokemonPage({
   return (
     <div className="pokemon-page-card-container">
       <div className="pokemon-page-card-text">
-        <h3
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%",
-            paddingLeft: "0px",
-          }}
-        >
+        <h3 className="page-header">
           <h3>{pokemonName}</h3>
           <h3>No. {pokemonIndex}</h3>
         </h3>
       </div>
       <div className="pokemon-page-card">
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          {pokemonTypes &&
-            pokemonTypes.map((type, index) => (
-              <div
-                key={index}
-                style={{
-                  margin: "10px",
-                  // display: "flex",
-                  // flexDirection: "row",
-                  paddingTop: "20px",
-                }}
-              >
-                <span
-                  key={index}
-                  className="page-type"
-                  style={{
-                    backgroundColor: typeColors[type],
-                    paddingLeft: "19px",
-                    paddingRight: "19px",
-                    paddingBottom: "3px",
-                    borderRadius: "20px",
-                    color: "white",
-                    boxShadow: "8px 12px 2px -1px rgba(0, 0, 0, .1)",
-                  }}
-                >
-                  {type}{" "}
-                </span>
-              </div>
-            ))}
+        <div className="type-container">
+          <div className="type-container">
+            {pokemonTypes &&
+              pokemonTypes.map((type, index) => (
+                <div key={index} className="type-item">
+                  <span
+                    key={index}
+                    className="type-span"
+                    style={{
+                      backgroundColor: typeColors[type],
+                    }}
+                  >
+                    {type}{" "}
+                  </span>
+                </div>
+              ))}
+          </div>
         </div>
         {imageUrl && (
-          <img className="page-image" src={artworkUrl} alt={pokemonName} />
+          <>
+            <img className="page-image" src={artworkUrl} alt={pokemonName} />
+            {/* <h3>{pokemonName}</h3> */}
+          </>
         )}
-        <p
-          style={{
-            // textAlign: "center",
-            color: "rgb(197, 197, 197)",
-            fontWeight: "lighter",
-            width: "70%",
-            // backgroundColor: " rgba(0, 0, 0, 0.3)",
-            padding: "30px",
-          }}
-        >
-          {pokemonDescription}
-        </p>
+
+        <p className="pokemon-page-description">{pokemonDescription}</p>
         <div className="page-stats">
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "30%",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: "30px",
-              }}
-            >
-              <h3 className="page-stat-type">Hp: {hp}</h3>
-              <h3 className="page-stat-type">Attack: {attack}</h3>
+          <div className="stats-types-container">
+            <h3 style={{ marginBottom: "17px" }}>Stats</h3>
 
-              <h3 className="page-stat-type">Defense: {defense}</h3>
-              <h3 className="page-stat-type">Speed: {speed}</h3>
-              <h3 className="page-stat-type">Sp. Attack: {specialAttack}</h3>
-              <h3 className="page-stat-type">Sp. Defense: {specialDefense}</h3>
-            </div>
-            <div className="page-stat-container">
-              <h3
-                className="page-stat-bar"
-                style={{
-                  width: `${limitWidth(hp)}%`,
-                }}
-              ></h3>
-              <h3
-                className="page-stat-bar"
-                style={{
-                  width: `${limitWidth(attack)}%`,
-                }}
-              ></h3>
+            <div className="stats-bar-container">
+              <div className="stats-container">
+                <h3 className="page-stat-type">Hp:</h3>
+                <h3 className="page-stat-type">Attack:</h3>
 
-              <h3
-                className="page-stat-bar"
-                style={{
-                  width: `${limitWidth(defense)}%`,
-                }}
-              ></h3>
-              <h3
-                className="page-stat-bar"
-                style={{
-                  width: `${limitWidth(speed)}%`,
-                }}
-              ></h3>
-              <h3
-                className="page-stat-bar"
-                style={{
-                  width: `${limitWidth(specialAttack)}%`,
-                }}
-              ></h3>
-              <h3
-                className="page-stat-bar"
-                style={{
-                  width: `${limitWidth(specialDefense)}%`,
-                }}
-              ></h3>
+                <h3 className="page-stat-type">Defense: </h3>
+                <h3 className="page-stat-type">Speed: </h3>
+                <h3 className="page-stat-type">Sp. Attack:</h3>
+                <h3 className="page-stat-type">Sp. Defense:</h3>
+              </div>
+              <div className="page-stat-container">
+                <h3
+                  className="page-stat-bar"
+                  style={{
+                    width: `${limitWidth(hp)}%`,
+                  }}
+                ></h3>
+                <h3
+                  className="page-stat-bar"
+                  style={{
+                    width: `${limitWidth(attack)}%`,
+                  }}
+                ></h3>
+                <h3
+                  className="page-stat-bar"
+                  style={{
+                    width: `${limitWidth(defense)}%`,
+                  }}
+                ></h3>
+                <h3
+                  className="page-stat-bar"
+                  style={{
+                    width: `${limitWidth(speed)}%`,
+                  }}
+                ></h3>
+                <h3
+                  className="page-stat-bar"
+                  style={{
+                    width: `${limitWidth(specialAttack)}%`,
+                  }}
+                ></h3>
+                <h3
+                  className="page-stat-bar"
+                  style={{
+                    width: `${limitWidth(specialDefense)}%`,
+                  }}
+                ></h3>
+              </div>
             </div>
           </div>
-          <div
-            style={{
-              width: "60%",
-              marginBottom: "30px",
-              //   height: "50%",
-              //   display: "flex",
-              //   flexDirection: "column",
-              //   backgroundColor: "rgba(121, 121, 121, 0.2)",
-              borderRadius: "30px",
-              padding: "20px",
-              marginTop: "20px",
-            }}
-          >
-            <h3>Weaknesses</h3>
+          <div className="weaknesses-container">
+            <h3 style={{ width: "100%" }}>Weaknesses</h3>
             {weaknesses.map((weakness, index) => (
               // <div key={index} style={{ marginTop: "5px" }}>
               <span
                 key={index}
+                className="weakness-style"
                 style={{
-                  display: "inline-block", // or "block"
                   backgroundColor: typeColors[weakness],
-                  paddingLeft: "12px",
-                  paddingRight: "12px",
-                  paddingBottom: "3px",
-                  borderRadius: "20px",
-                  margin: "5px",
-                  boxShadow: "8px 12px 2px -1px rgba(0, 0, 0, .1)",
-
-                  color: "white",
                 }}
               >
                 {weakness}{" "}

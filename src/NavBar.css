@@ -50,7 +50,7 @@
   align-items: center;
   padding: 0.5rem;
   cursor: pointer;
-  color: rgb(156, 57, 0);
+  color: rgb(196, 78, 0);
   z-index: 1200;
   transition: 0.3s;
 }
@@ -232,7 +232,7 @@
   }
 }
 .active {
-  color: rgb(226, 109, 0);
+  color: rgb(255, 132, 61);
   transition: 0.3s;
   transform: scale(1.1);
 }

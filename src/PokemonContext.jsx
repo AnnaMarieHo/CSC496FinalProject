@@ -6,7 +6,7 @@ const PokemonContext = createContext();
 export const PokemonProvider = ({ children }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const url = "https://pokeapi.co/api/v2/pokemon/";
-  const limit = 100;
+  const limit = 40;
 
   useEffect(() => {
     const fetchData = async () => {

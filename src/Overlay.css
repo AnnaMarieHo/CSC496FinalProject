@@ -1,0 +1,37 @@
+.overlay-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent */
+  z-index: 1500; /* High z-index to ensure it overlays all content */
+}
+
+.overlay-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1501; /* Ensures it is above the background */
+  background: none;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 40vw; /* or some other max-width */
+  min-width: 600px;
+  max-height: 100vh; /* Limits the height to 90% of the viewport */
+  overflow-y: auto; /* Enables vertical scrolling if content is larger than the container */
+  overflow-x: hidden; /* Enables vertical scrolling if content is larger than the container */
+}
+
+.overlay {
+  position: fixed;
+  inset: 0; /* Covers the entire viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+}

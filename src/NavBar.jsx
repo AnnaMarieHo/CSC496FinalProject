@@ -24,9 +24,6 @@ export default function Navbar() {
           <ul className={`nav-menu ${isOpen ? "active" : ""}`}>
             <CustomLink to="/">Home</CustomLink>
             <CustomLink to="/pokemon">Pokemon</CustomLink>
-            {/* <CustomLink to="/items">Items</CustomLink>
-            <CustomLink to="/locations">Locations</CustomLink> */}
-            {/* <CustomLink to="/Search">Search</CustomLink> */}
           </ul>
         </div>
       </nav>
