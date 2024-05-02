@@ -29,7 +29,6 @@ export default function PokemonCard({
     setPokemonDescription(description);
   }, [name, artworkUrl, type, index, description, spriteUrl, baseStat]);
 
-  // Function to limit the width of stat bars to 100%
   const limitWidth = (value) => {
     return Math.min(value, 100);
   };
@@ -84,7 +83,6 @@ export default function PokemonCard({
               No. {pokemonIndex}
             </h3>
           </div>
-          {/* <div style={{ width: "100%" }}> */}
 
           <div className="stats">
             <div style={{ width: "100px" }}>

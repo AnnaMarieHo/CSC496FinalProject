@@ -4,10 +4,9 @@ import PokemonPage from "./PokemonPage";
 import PokemonContext from "./PokemonContext";
 import "./Pokemon.css";
 import { Overlay } from "./Overlay";
-import { useOverlay } from "./OverlayContext"; // Ensure this is correctly imported
+import { useOverlay } from "./OverlayContext";
 
 export default function Home() {
-  // Access overlay state and control methods
   const { isOverlayOpen, showOverlay, hideOverlay } = useOverlay();
 
   const [selectedPokemon, setSelectedPokemon] = useState([]);
@@ -30,7 +29,7 @@ export default function Home() {
     console.log(pokemonData);
     setSelectedPokemon(pokemonData);
     console.log("SELECTED", selectedPokemon);
-    showOverlay(); // Correct usage to show the overlay
+    showOverlay();
   };
 
   return (

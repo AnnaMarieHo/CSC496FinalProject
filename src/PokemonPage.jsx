@@ -58,18 +58,15 @@ export default function PokemonPage({
         fairy: ["poison", "steel"],
       };
 
-      // Check if pokemonTypes is not null
       if (pokemonTypes) {
         const weaknesses = pokemonTypes.reduce((acc, currentType) => {
           return [...acc, ...typeWeaknesses[currentType]];
         }, []);
 
-        // Remove duplicate weaknesses
         const uniqueWeaknesses = [...new Set(weaknesses)];
         setWeaknesses(uniqueWeaknesses);
       }
     };
-    // console.log(selectedPokemon);
 
     calculateWeaknesses();
   }, [

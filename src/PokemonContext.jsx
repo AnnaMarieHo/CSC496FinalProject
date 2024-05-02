@@ -6,7 +6,7 @@ const PokemonContext = createContext();
 export const PokemonProvider = ({ children }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const url = "https://pokeapi.co/api/v2/pokemon/";
-  const limit = 100;
+  const limit = 300;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,15 +28,11 @@ export const PokemonProvider = ({ children }) => {
             let types = [];
 
             const detailedResponse = await axios.get(pokemon.url);
-            const pokemonNumber = detailedResponse.data.id; // Extract Pokémon number
+            const pokemonNumber = detailedResponse.data.id;
 
-            // Loop through each type in the types array
             detailedResponse.data.types.forEach((type) => {
-              types.push(type.type.name); // Push the type name to the types array
+              types.push(type.type.name);
             });
-
-            // Now the types array will contain all the types of the Pokemon
-            // console.log(types);
 
             detailedResponse.data.stats.forEach((stat) => {
               switch (stat.stat.name) {
@@ -61,12 +57,10 @@ export const PokemonProvider = ({ children }) => {
               }
             });
 
-            // Fetch additional description data
             const speciesResponse = await axios.get(
               `https://pokeapi.co/api/v2/pokemon-species/${pokemonNumber}/`
             );
 
-            // Extract relevant description data
             const descriptionData = {
               description: speciesResponse.data.flavor_text_entries.find(
                 (flavor) => flavor.language.name === "en"
@@ -100,16 +94,12 @@ export const PokemonProvider = ({ children }) => {
                 specialAttack,
                 specialDefense,
               },
-
-              // Merge additional description data
-              //   ...descriptionData,
             };
           })
         );
         while (response.data.next && allPokemon.length < limit) {
           response = await axios.get(response.data.next);
           const remainingLimit = limit - allPokemon.length;
-          // Append only the necessary number of Pokémon to meet the limit
           allPokemon = [
             ...allPokemon,
             ...response.data.results.slice(0, remainingLimit),

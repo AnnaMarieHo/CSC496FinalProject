@@ -5,7 +5,7 @@ import "./Home.css";
 import PokemonCard from "./PokemonCard";
 import cinemaIcon from "./assets/cinema.png";
 import { Overlay } from "./Overlay";
-import { useOverlay } from "./OverlayContext"; // Ensure this is correctly imported
+import { useOverlay } from "./OverlayContext";
 
 export default function Home() {
   const { isOverlayOpen, showOverlay, hideOverlay } = useOverlay();
